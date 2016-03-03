@@ -1,0 +1,59 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Chq number:</strong>
+  <%= @log.chq_number %>
+</p>
+
+<p>
+  <strong>Chq date:</strong>
+  <%= @log.chq_date %>
+</p>
+
+<p>
+  <strong>Category:</strong>
+  <%= @log.category %>
+</p>
+
+<p>
+  <strong>Deal:</strong>
+  <%= @log.deal_id %>
+</p>
+
+<p>
+  <strong>Particular:</strong>
+  <%= @log.particular %>
+</p>
+
+<p>
+  <strong>Currencies:</strong>
+  <%= @log.currencies %>
+</p>
+
+<p>
+  <strong>Amount:</strong>
+  <%= @log.amount %>
+</p>
+
+<p>
+  <strong>Prepared:</strong>
+  <%= @log.prepared %>
+</p>
+
+<p>
+  <strong>Sign date:</strong>
+  <%= @log.sign_date %>
+</p>
+
+<p>
+  <strong>Present date:</strong>
+  <%= @log.present_date %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @log.status %>
+</p>
+
+<%= link_to 'Edit', edit_log_path(@log) %> |
+<%= link_to 'Back', logs_path %>

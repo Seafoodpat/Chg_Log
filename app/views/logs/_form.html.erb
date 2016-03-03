@@ -1,0 +1,61 @@
+<%= form_for(@log) do |f| %>
+  <% if @log.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@log.errors.count, "error") %> prohibited this log from being saved:</h2>
+
+      <ul>
+      <% @log.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :chq_number %><br>
+    <%= f.text_field :chq_number %>
+  </div>
+  <div class="field">
+    <%= f.label :chq_date %><br>
+    <%= f.date_select :chq_date %>
+  </div>
+  <div class="field">
+    <%= f.label :category %><br>
+    <%= f.text_field :category %>
+  </div>
+  <div class="field">
+    <%= f.label :deal_id %><br>
+    <%= f.number_field :deal_id %>
+  </div>
+  <div class="field">
+    <%= f.label :particular %><br>
+    <%= f.text_field :particular %>
+  </div>
+  <div class="field">
+    <%= f.label :currencies %><br>
+    <%= f.text_field :currencies %>
+  </div>
+  <div class="field">
+    <%= f.label :amount %><br>
+    <%= f.text_field :amount %>
+  </div>
+  <div class="field">
+    <%= f.label :prepared %><br>
+    <%= f.text_field :prepared %>
+  </div>
+  <div class="field">
+    <%= f.label :sign_date %><br>
+    <%= f.date_select :sign_date %>
+  </div>
+  <div class="field">
+    <%= f.label :present_date %><br>
+    <%= f.date_select :present_date %>
+  </div>
+  <div class="field">
+    <%= f.label :status %><br>
+    <%= f.text_field :status %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
