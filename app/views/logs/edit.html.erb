@@ -1,6 +1,10 @@
-<h1>Editing Log</h1>
+<div class="panel panel-default">
+	<div class="panel-heading"><h2>Update Log</h2></div>
+	<div class="panel-body">
+		<%= render 'form' %>
+	</div>
 
-<%= render 'form' %>
-
-<%= link_to 'Show', @log %> |
-<%= link_to 'Back', logs_path %>
+	<div class="panel-footer">
+		<%= link_to 'Back', logs_path %>
+	</div>
+</div>

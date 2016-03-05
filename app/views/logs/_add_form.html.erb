@@ -15,7 +15,7 @@
   <div class="col-md-6">
     <div class="field">
       <%= f.label :chq_number %><br>
-      <%= f.text_field :chq_number %>
+      <%= f.text_field :chq_number, required: true %>
     </div>
   </div>
 
@@ -31,22 +31,23 @@
   <div class="col-md-3">
     <div class="field">
       <%= f.label :payee_name %><br>
-      <%= f.text_field :payee_name %>
+      <%= f.text_field :payee_name, required: true %>
     </div>
   </div>
   
   <div class="col-md-3">
     <div class="field">
       <%= f.label :category %><br>
-      <%= f.select :category, options_for_select([['OP'],['Deal'],['Sourcing'],['Lux'],['COS'],['Health'],['XB'],['SME2C']], :selected => f.object.category), {} %>
+      <%= f.select :category, options_for_select([['OP'],['Deal'],['Sourcing'],['Lux'],['COS'],['Health'],['XB'],['SME2C']], params[:category]), {} %>
     </div>
   </div>
 
   <div class="col-md-3">
     <div class="field">
       <%= f.label :particular %><br>
-      <%= f.text_field :particular %>
+      <%= f.text_field :particular, required: true %>
     </div>
+
   </div>
 
   <div class="col-md-3">
@@ -56,45 +57,23 @@
     </div>
   </div>
 </div>
-  
+
 <div class="row">
   <div class="col-md-4">
     <div class="field">
       <%= f.label :amount %><br>
-      <%= f.select :currencies, options_for_select([['HKD'],['USD'],['EUR'],['CAD'],['SGD'],['AUD'],['MYR'],['RMB'],['KRW'],['GBP']], :selected => f.object.currencies), {} %>
-      <%= f.text_field :amount %>
+      <%= f.select :currencies, options_for_select([['HKD'],['USD'],['EUR'],['CAD'],['SGD'],['AUD'],['MYR'],['RMB'],['KRW'],['GBP']], params[:currencies]), {} %>
+      <%= f.text_field :amount, required: true %>
     </div>
   </div>
+  
+  
 </div>
-
 
   <div class="field">
     <%= f.label :prepared, "Prepared by" %><br>
-    <%= f.text_field :prepared %>
+    <%= f.text_field :prepared, value: @log.user.name %>
   </div>
-
-<div class="row">
-  <div class="col-md-4">
-    <div class="field">
-      <%= f.label :sign_date, "Signed Cheque Date" %><br>
-      <%= f.text_field :sign_date, 'data-behaviour' => 'datepicker' %>
-    </div>
-  </div>
-
-  <div class="col-md-4">
-    <div class="field">
-      <%= f.label :present_date, "Cheque Presented Date" %><br>
-      <%= f.text_field :present_date, 'data-behaviour' => 'datepicker' %>
-    </div>
-  </div>
-
-  <div class="col-md-4">
-    <div class="field">
-      <%= f.label :status %><br>
-      <%= f.text_field :status %>
-    </div>
-  </div>
-</div>
 
   <div class="actions">
     <%= f.submit %>

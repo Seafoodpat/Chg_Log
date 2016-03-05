@@ -32,12 +32,25 @@
         <td><%= log.sign_date %></td>
         <td><%= log.present_date %></td>
         <td><%= log.status %></td>
-        <td><%= link_to 'Show', log %></td>
-        <td><%= link_to 'Edit', edit_log_path(log) %></td>
-        <td><%= link_to 'Destroy', log, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+
+        <td>
+          <%= link_to log, class: 'btn btn-success btn-xs', 'data-no-turbolink' => true do %>
+            <span class="glyphicon glyphicon-edit"></span>
+          <% end %>
+        </td>
+
+        <td>
+          <%= link_to edit_log_path(log), class: 'btn btn-warning btn-xs', 'data-no-turbolink' => true do %>
+            <span class="glyphicon glyphicon-wrench"></span>
+          <% end %>
+        </td>
+
+        <td>
+          <%= link_to log, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-xs' do %>
+            <span class="glyphicon glyphicon-trash"></span>
+          <% end %>
+        </td>
       </tr>
     <% end %>
   </tbody>
 </table>
-
-

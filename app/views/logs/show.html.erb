@@ -1,64 +1,106 @@
-<p id="notice"><%= notice %></p>
+<div class="panel panel-default">
+  <div class="panel-heading"><h2>View Record</h2></div>
+  <div class="panel-body">
+    <div class="row">
+      <div class="col-md-6">
+        <p>
+          <strong>Chq number:</strong><br>
+          <%= @log.chq_number %>
+        </p>
+      </div>
 
-<p>
-  <strong>Chq number:</strong>
-  <%= @log.chq_number %>
-</p>
+    <div class="col-md-6">
+      <p>
+        <strong>Chq date:</strong><br>
+        <%= @log.chq_date %>
+      </p>
+    </div>
+  </div>
 
-<p>
-  <strong>Chq date:</strong>
-  <%= @log.chq_date %>
-</p>
+  <div class="row">
+    <div class="col-md-3">
+      <p>
+        <strong>Payee Name:</strong><br>
+        <%= @log.payee_name %>
+      </p>
+    </div>
+  
+    <div class="col-md-3">
+      <p>
+        <strong>Category:</strong><br>
+        <%= @log.category %>
+      </p>
+    </div>
 
-<p>
-  <strong>Payee Name:</strong>
-  <%= @log.payee_name %>
-</p>
+    <div class="col-md-3">
+      <p>
+        <strong>Particular:</strong><br>
+        <%= @log.particular %>
+      </p>
+    </div>
 
-<p>
-  <strong>Category:</strong>
-  <%= @log.category %>
-</p>
+    <div class="col-md-3">
+      <p>
+        <strong>Deal:</strong><br>
+        <%= @log.deal_id %>
+      </p>
+    </div>
+  </div>
 
-<p>
-  <strong>Deal:</strong>
-  <%= @log.deal_id %>
-</p>
+  <div class="row">
+    <div class="col-md-4">
+      <p>
+        <strong>Amount:</strong><br>
+        <%= @log.currencies %>
+        <%= @log.amount %>
+      </p>
+    </div>
+  </div>  
+  
+  <%= form_for(@log) do |f| %>
+  <% if @log.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@log.errors.count, "error") %> prohibited this log from being saved:</h2>
 
-<p>
-  <strong>Particular:</strong>
-  <%= @log.particular %>
-</p>
+      <ul>
+      <% @log.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
 
-<p>
-  <strong>Currencies:</strong>
-  <%= @log.currencies %>
-</p>
+  <div class="row">
+    <div class="col-md-4">
+      <div class="field">
+        <%= f.label :sign_date, "Signed Cheque Date" %><br>
+        <%= f.text_field :sign_date, 'data-behaviour' => 'datepicker' %>
+      </div>
+    </div>
 
-<p>
-  <strong>Amount:</strong>
-  <%= @log.amount %>
-</p>
+    <div class="col-md-4">
+      <div class="field">
+        <%= f.label :present_date, "Cheque Presented Date" %><br>
+        <%= f.text_field :present_date, 'data-behaviour' => 'datepicker' %>
+      </div>
+    </div>
 
-<p>
-  <strong>Prepared:</strong>
-  <%= @log.prepared %>
-</p>
+    <div class="col-md-4">
+      <div class="field">
+        <%= f.label :status %><br>
+        <%= f.text_field :status %>
+      </div>
+    </div>
+  </div>
 
-<p>
-  <strong>Sign date:</strong>
-  <%= @log.sign_date %>
-</p>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
 
-<p>
-  <strong>Present date:</strong>
-  <%= @log.present_date %>
-</p>
+  <div class="panel-footer">
+    <%= link_to 'Edit', edit_log_path(@log) %> |
+    <%= link_to 'Back', logs_path %>
+  </div>
+</div>
 
-<p>
-  <strong>Status:</strong>
-  <%= @log.status %>
-</p>
-
-<%= link_to 'Edit', edit_log_path(@log) %> |
-<%= link_to 'Back', logs_path %>

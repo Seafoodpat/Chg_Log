@@ -3,21 +3,21 @@ class LogsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @logs = Log.all
+    @logs = Log.all.order("created_at DESC")
   end
 
   def show
   end
 
   def new
-    @log = Log.new
+    @log = current_user.logs.build
   end
 
   def edit
   end
 
   def create
-    @log = Log.new(log_params)
+    @log = current_user.logs.build(log_params)
 
     respond_to do |format|
       if @log.save
