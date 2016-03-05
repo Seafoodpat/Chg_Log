@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160303154249) do
+ActiveRecord::Schema.define(version: 20160305084513) do
 
   create_table "logs", force: :cascade do |t|
     t.string   "chq_number"
@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(version: 20160303154249) do
     t.string   "status"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
+    t.string   "payee_name"
   end
 
   create_table "users", force: :cascade do |t|
