@@ -27,7 +27,7 @@
         <td><%= log.deal_id %></td>
         <td><%= log.particular %></td>
         <td><%= log.currencies %></td>
-        <td><%= log.amount %></td>
+        <td><%= number_to_currency(log.amount, :unit => "") %></td>
         <td><%= log.prepared %></td>
         <td><%= log.sign_date %></td>
         <td><%= log.present_date %></td>
@@ -54,3 +54,7 @@
     <% end %>
   </tbody>
 </table>
+
+<div>
+   <%= will_paginate @logs, renderer: BootstrapPagination::Rails %>
+</div>
