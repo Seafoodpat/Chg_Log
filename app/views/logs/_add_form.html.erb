@@ -12,14 +12,14 @@
   <% end %>
 
 <div class="row">
-  <div class="col-md-6">
+  <div class="col-md-4">
     <div class="field">
       <%= f.label :chq_number %><br>
       <%= f.text_field :chq_number, required: true %>
     </div>
   </div>
 
-  <div class="col-md-6">
+  <div class="col-md-4">
     <div class="field">
       <%= f.label :chq_date %><br>
       <%= f.text_field :chq_date, required: true, 'data-behaviour' => 'datepicker' %>
@@ -28,32 +28,40 @@
 </div>
 
 <div class="row">
-  <div class="col-md-3">
+  <div class="col-md-4">
     <div class="field">
       <%= f.label :payee_name %><br>
       <%= f.text_field :payee_name, required: true %>
     </div>
   </div>
   
-  <div class="col-md-3">
+  <div class="col-md-4">
     <div class="field">
       <%= f.label :category %><br>
       <%= f.select :category, options_for_select([['OP'],['Deal'],['Sourcing'],['Lux'],['COS'],['Health'],['XB'],['SME2C']], params[:category]), {} %>
     </div>
   </div>
+</div>
 
-  <div class="col-md-3">
+<div class="row">
+  <div class="col-md-4">
+    <div class="field">
+      <%= f.label :deal_id %><br>
+      <%= f.text_field :deal_id %>
+    </div>
+  </div>
+
+  <div class="col-md-4">
     <div class="field">
       <%= f.label :particular %><br>
       <%= f.text_field :particular, required: true %>
     </div>
-
   </div>
 
-  <div class="col-md-3">
+  <div class="col-md-4">
     <div class="field">
-      <%= f.label :deal_id %><br>
-      <%= f.number_field :deal_id %>
+      <%= f.label :salesperson %><br>
+      <%= f.text_field :salesperson, required: true %>
     </div>
   </div>
 </div>
@@ -66,8 +74,15 @@
       <%= f.text_field :amount, required: true %>
     </div>
   </div>
-  
-  
+
+  <div class="col-md-4"></div>
+
+  <div class="col-md-4">
+    <div class="field">
+      <%= f.label :voucher_no, "Voucher#" %><br>
+      <%= f.text_field :voucher_no %>
+    </div>
+  </div>
 </div>
 
   <div class="field">

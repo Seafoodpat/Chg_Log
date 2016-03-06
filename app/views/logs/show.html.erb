@@ -2,14 +2,14 @@
   <div class="panel-heading"><h2>View Record</h2></div>
   <div class="panel-body">
     <div class="row">
-      <div class="col-md-6">
+      <div class="col-md-4">
         <p>
           <strong>Chq number:</strong><br>
           <%= @log.chq_number %>
         </p>
       </div>
 
-    <div class="col-md-6">
+    <div class="col-md-4">
       <p>
         <strong>Chq date:</strong><br>
         <%= @log.chq_date %>
@@ -18,31 +18,40 @@
   </div>
 
   <div class="row">
-    <div class="col-md-3">
+    <div class="col-md-4">
       <p>
         <strong>Payee Name:</strong><br>
         <%= @log.payee_name %>
       </p>
     </div>
   
-    <div class="col-md-3">
+    <div class="col-md-4">
       <p>
         <strong>Category:</strong><br>
         <%= @log.category %>
       </p>
     </div>
+  </div>
 
-    <div class="col-md-3">
+  <div class="row">
+    <div class="col-md-4">
+      <p>
+        <strong>Deal:</strong><br>
+        <%= @log.deal_id %>
+      </p>
+    </div>
+
+    <div class="col-md-4">
       <p>
         <strong>Particular:</strong><br>
         <%= @log.particular %>
       </p>
     </div>
-
-    <div class="col-md-3">
+    
+    <div class="col-md-4">
       <p>
-        <strong>Deal:</strong><br>
-        <%= @log.deal_id %>
+        <strong>Salesperson:</strong><br>
+        <%= @log.salesperson %>
       </p>
     </div>
   </div>
@@ -55,7 +64,21 @@
         <%= @log.amount %>
       </p>
     </div>
+
+    <div class="col-md-4"></div>
+    
+    <div class="col-md-4">
+      <strong>Voucher#:</strong><br>
+      <%= @log.voucher_no %>
+    </div>
   </div>  
+
+  <p>
+    <strong>Prepared by:</strong>
+    <%= @log.prepared %>
+  </p>
+
+  <br>
   
   <%= form_for(@log) do |f| %>
   <% if @log.errors.any? %>
@@ -87,7 +110,7 @@
 
     <div class="col-md-4">
       <div class="field">
-        <%= f.label :status %><br>
+        <%= f.label :status, "Void Cheque Reason" %><br>
         <%= f.text_field :status %>
       </div>
     </div>

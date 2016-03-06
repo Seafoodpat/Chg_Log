@@ -7,12 +7,12 @@
       <th>Category</th>
       <th>Deal</th>
       <th>Particular</th>
+      <th>Salesperson</th>
       <th>Currencies</th>
       <th>Amount</th>
-      <th>Prepared</th>
-      <th>Sign date</th>
-      <th>Present date</th>
-      <th>Status</th>
+      <th>Prepared by</th>
+      <th>Sign chq date</th>
+      <th>Chq Presented date</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -26,12 +26,12 @@
         <td><%= log.category %></td>
         <td><%= log.deal_id %></td>
         <td><%= log.particular %></td>
+        <td><%= log.salesperson %></td>
         <td><%= log.currencies %></td>
         <td><%= number_to_currency(log.amount, :unit => "") %></td>
         <td><%= log.prepared %></td>
         <td><%= log.sign_date %></td>
         <td><%= log.present_date %></td>
-        <td><%= log.status %></td>
 
         <td>
           <%= link_to log, class: 'btn btn-success btn-xs', 'data-no-turbolink' => true do %>

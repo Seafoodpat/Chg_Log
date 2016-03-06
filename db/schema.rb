@@ -11,13 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160305103848) do
+ActiveRecord::Schema.define(version: 20160306084145) do
 
   create_table "logs", force: :cascade do |t|
     t.string   "chq_number"
     t.date     "chq_date"
     t.string   "category"
-    t.integer  "deal_id"
+    t.string   "deal_id"
     t.string   "particular"
     t.string   "currencies"
     t.decimal  "amount"
@@ -29,6 +29,8 @@ ActiveRecord::Schema.define(version: 20160305103848) do
     t.datetime "updated_at",   null: false
     t.string   "payee_name"
     t.integer  "user_id"
+    t.string   "salesperson"
+    t.string   "voucher_no"
   end
 
   create_table "users", force: :cascade do |t|
