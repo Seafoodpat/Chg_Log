@@ -15,14 +15,14 @@
   <div class="col-md-4">
     <div class="field">
       <%= f.label :chq_number %><br>
-      <%= f.text_field :chq_number %>
+      <%= f.text_field :chq_number, required: true %>
     </div>
   </div>
 
   <div class="col-md-4">
     <div class="field">
       <%= f.label :chq_date %><br>
-      <%= f.text_field :chq_date, 'data-behaviour' => 'datepicker' %>
+      <%= f.text_field :chq_date, required: true, 'data-behaviour' => 'datepicker' %>
     </div>
   </div>
 </div>
@@ -31,14 +31,18 @@
   <div class="col-md-4">
     <div class="field">
       <%= f.label :payee_name %><br>
-      <%= f.text_field :payee_name %>
+      <%= f.text_field :payee_name, required: true %>
     </div>
   </div>
   
   <div class="col-md-4">
     <div class="field">
       <%= f.label :category %><br>
-      <%= f.select :category, options_for_select([['OP'],['Deal'],['Sourcing'],['Lux'],['COS'],['Health'],['XB'],['SME2C'],['Refund'],['Others']], :selected => f.object.category), {} %>
+      <% if @log.new_record? %>
+        <%= f.select :category, options_for_select([['OP'],['Deal'],['Sourcing'],['Lux'],['COS'],['Health'],['XB'],['SME2C'],['Refund'],['Others']], params[:category]), {} %>
+      <% else %>
+        <%= f.select :category, options_for_select([['OP'],['Deal'],['Sourcing'],['Lux'],['COS'],['Health'],['XB'],['SME2C'],['Refund'],['Others']], :selected => f.object.category), {} %>
+      <% end %>
     </div>
   </div>
 </div>
@@ -47,21 +51,21 @@
   <div class="col-md-4">
     <div class="field">
       <%= f.label :deal_id %><br>
-      <%= f.text_field :deal_id %>
+      <%= f.text_field :deal_id, required: false %>
     </div>
   </div>
 
   <div class="col-md-4">
     <div class="field">
       <%= f.label :particular %><br>
-      <%= f.text_field :particular %>
+      <%= f.text_field :particular, required: true %>
     </div>
   </div>
 
   <div class="col-md-4">
     <div class="field">
       <%= f.label :salesperson %><br>
-      <%= f.text_field :salesperson %>
+      <%= f.text_field :salesperson, required: false %>
     </div>
   </div>
   
@@ -71,8 +75,12 @@
   <div class="col-md-4">
     <div class="field">
       <%= f.label :amount %><br>
-      <%= f.select :currencies, options_for_select([['HKD'],['USD'],['EUR'],['CAD'],['SGD'],['AUD'],['MYR'],['RMB'],['KRW'],['GBP']], :selected => f.object.currencies), {} %>
-      <%= f.text_field :amount %>
+      <% if @log.new_record? %>
+        <%= f.select :currencies, options_for_select([['HKD'],['USD'],['EUR'],['CAD'],['SGD'],['AUD'],['MYR'],['RMB'],['KRW'],['GBP']], params[:currencies]), {} %>
+      <% else %>
+        <%= f.select :currencies, options_for_select([['HKD'],['USD'],['EUR'],['CAD'],['SGD'],['AUD'],['MYR'],['RMB'],['KRW'],['GBP']], :selected => f.object.currencies), {} %>
+      <% end %>
+      <%= f.text_field :amount, required: true %>
     </div>
   </div>
 
@@ -80,35 +88,35 @@
 
   <div class="col-md-4">
     <%= f.label :voucher_no, "Voucher#" %><br>
-    <%= f.text_field :voucher_no %>
+    <%= f.text_field :voucher_no, required: false %>
   </div>
 </div>
 
 
   <div class="field">
     <%= f.label :prepared, "Prepared by" %><br>
-    <%= f.text_field :prepared %>
+    <%= f.text_field :prepared, disabled: true %>
   </div>
 
 <div class="row">
   <div class="col-md-4">
     <div class="field">
       <%= f.label :sign_date, "Signed Cheque Date" %><br>
-      <%= f.text_field :sign_date, 'data-behaviour' => 'datepicker' %>
+      <%= f.text_field :sign_date, required: false, 'data-behaviour' => 'datepicker' %>
     </div>
   </div>
 
   <div class="col-md-4">
     <div class="field">
       <%= f.label :present_date, "Cheque Presented Date" %><br>
-      <%= f.text_field :present_date, 'data-behaviour' => 'datepicker' %>
+      <%= f.text_field :present_date, required: false, 'data-behaviour' => 'datepicker' %>
     </div>
   </div>
 
   <div class="col-md-4">
     <div class="field">
       <%= f.label :status, "Void Cheque Reason" %><br>
-      <%= f.text_field :status %>
+      <%= f.text_field :status, required: false %>
     </div>
   </div>
 </div>
