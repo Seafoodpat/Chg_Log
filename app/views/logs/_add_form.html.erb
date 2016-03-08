@@ -38,7 +38,7 @@
   <div class="col-md-4">
     <div class="field">
       <%= f.label :category %><br>
-      <%= f.select :category, options_for_select([['OP'],['Deal'],['Sourcing'],['Lux'],['COS'],['Health'],['XB'],['SME2C']], params[:category]), {} %>
+      <%= f.select :category, options_for_select([['OP'],['Deal'],['Sourcing'],['Lux'],['COS'],['Health'],['XB'],['SME2C'],['Refund'],['Others']], params[:category]), {} %>
     </div>
   </div>
 </div>
@@ -61,7 +61,7 @@
   <div class="col-md-4">
     <div class="field">
       <%= f.label :salesperson %><br>
-      <%= f.text_field :salesperson, required: true %>
+      <%= f.text_field :salesperson %>
     </div>
   </div>
 </div>
@@ -87,7 +87,7 @@
 
   <div class="field">
     <%= f.label :prepared, "Prepared by" %><br>
-    <%= f.text_field :prepared, value: @log.user.name %>
+    <%= f.text_field :prepared, disabled: true %>
   </div>
 
   <div class="actions">

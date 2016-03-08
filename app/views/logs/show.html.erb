@@ -80,46 +80,26 @@
 
   <br>
   
-  <%= form_for(@log) do |f| %>
-  <% if @log.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@log.errors.count, "error") %> prohibited this log from being saved:</h2>
-
-      <ul>
-      <% @log.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
   <div class="row">
     <div class="col-md-4">
-      <div class="field">
-        <%= f.label :sign_date, "Signed Cheque Date" %><br>
-        <%= f.text_field :sign_date, 'data-behaviour' => 'datepicker' %>
-      </div>
+      <strong>Signed Cheque Date:</strong><br>
+      <%= @log.sign_date %>
     </div>
 
     <div class="col-md-4">
-      <div class="field">
-        <%= f.label :present_date, "Cheque Presented Date" %><br>
-        <%= f.text_field :present_date, 'data-behaviour' => 'datepicker' %>
-      </div>
+      <strong>Cheque Presented Date:</strong><br>
+      <%= @log.present_date %>
     </div>
 
     <div class="col-md-4">
-      <div class="field">
-        <%= f.label :status, "Void Cheque Reason" %><br>
-        <%= f.text_field :status %>
-      </div>
+      <strong>Void Cheque Reason:</strong><br>
+      <%= @log.status %>
     </div>
   </div>
 
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+  
+  <br>
+  <br>
 
   <div class="panel-footer">
     <%= link_to 'Edit', edit_log_path(@log) %> |

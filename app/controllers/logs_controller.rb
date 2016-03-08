@@ -11,6 +11,7 @@ class LogsController < ApplicationController
 
   def new
     @log = current_user.logs.build
+    @log.prepared = current_user.name
   end
 
   def edit
@@ -18,10 +19,11 @@ class LogsController < ApplicationController
 
   def create
     @log = current_user.logs.build(log_params)
+    @log.prepared = current_user.name
 
     respond_to do |format|
       if @log.save
-        format.html { redirect_to @log, notice: 'Log was successfully created.' }
+        format.html { redirect_to @log, notice: 'Record was successfully created.' }
         format.json { render :show, status: :created, location: @log }
       else
         format.html { render :new }
@@ -33,7 +35,7 @@ class LogsController < ApplicationController
   def update
     respond_to do |format|
       if @log.update(log_params)
-        format.html { redirect_to @log, notice: 'Log was successfully updated.' }
+        format.html { redirect_to @log, notice: 'Record was successfully updated.' }
         format.json { render :show, status: :ok, location: @log }
       else
         format.html { render :edit }
@@ -45,7 +47,7 @@ class LogsController < ApplicationController
   def destroy
     @log.destroy
     respond_to do |format|
-      format.html { redirect_to logs_url, notice: 'Log was successfully destroyed.' }
+      format.html { redirect_to logs_url, notice: 'Record was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -56,6 +58,6 @@ class LogsController < ApplicationController
     end
 
     def log_params
-      params.require(:log).permit(:chq_number, :chq_date, :payee_name, :category, :deal_id, :particular, :currencies, :amount, :prepared, :sign_date, :present_date, :status, :salesperson, :voucher_no)
+      params.require(:log).permit(:chq_number, :chq_date, :payee_name, :category, :deal_id, :particular, :prepared, :currencies, :amount, :sign_date, :present_date, :status, :salesperson, :voucher_no)
     end
 end
