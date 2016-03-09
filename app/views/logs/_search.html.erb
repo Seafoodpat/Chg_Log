@@ -1,0 +1,53 @@
+<%= search_form_for @q do |f| %>
+
+  <%= f.label :payee_name_cont %>
+  <%= f.search_field :payee_name_cont %>
+
+  <br>
+  <br>
+
+  <%= f.label :sign_date_gteq , "Sign Chq Date Start from:"%>   
+  <%= f.text_field :sign_date_gteq, 'data-behaviour' => 'datepicker' %>     
+
+  <%=f.label :sign_date_lteq, "to" %>   
+  <%= f.text_field :sign_date_lteq, 'data-behaviour' => 'datepicker' %>
+
+  <br>
+  <br>
+
+  <%= f.label :present_date_gteq , "Chq Presented Date Start from:"%>   
+  <%= f.text_field :present_date_gteq, 'data-behaviour' => 'datepicker' %>     
+
+  <%=f.label :present_date_lteq, "to" %>   
+  <%= f.text_field :present_date_lteq, 'data-behaviour' => 'datepicker' %>
+
+  <br>
+  <br>
+
+  <%= f.label :category_eq , "Search by Category:"%>   
+  <%= f.select :category_eq, options_for_select([[''],['OP'],['Deal'],['Sourcing'],['Lux'],['COS'],['Health'],['XB'],['SME2C'],['Refund'],['Others']], params[:category]), {} %>
+
+  <br>
+  <br>
+	
+	<%= f.label :currencies_eq , "Search by Currency:"%>   
+  <%= f.select :currencies_eq, options_for_select([[''],['HKD'],['USD'],['EUR'],['CAD'],['SGD'],['AUD'],['MYR'],['RMB'],['KRW'],['GBP']], params[:currencies]), {} %>
+
+  <br>
+  <br>
+
+  <%= f.label :amount_gteq , "Amount greater than"%>   
+  <%= f.text_field :amount_gteq %>     
+
+  <%=f.label :amount_date_lteq, "Amount less than" %>   
+  <%= f.text_field :amount_lteq %>
+
+  <br>
+  <br>
+
+  <%= f.submit %>
+
+<% end %>
+
+<br>
+<br>

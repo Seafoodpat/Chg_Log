@@ -3,7 +3,8 @@ class LogsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @logs = Log.all.order("created_at DESC").paginate(:page => params[:page], :per_page => 3)
+    @q = Log.ransack(params[:q])
+    @logs = @q.result(distinct: true).order("created_at DESC").paginate(:page => params[:page], :per_page => 3)
   end
 
   def show
