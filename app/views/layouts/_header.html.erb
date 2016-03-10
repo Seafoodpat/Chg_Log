@@ -23,18 +23,19 @@
               <span class="glyphicon glyphicon-list-alt"></span> View Record
             <% end %>
           </li>
+          <% if not current_user.viewer? %>
+            <li>
+              <%= link_to new_log_path, 'data-no-turbolink' => true do %>
+                <span class="glyphicon glyphicon-plus"></span> Add Record
+              <% end %>
+            </li>
 
-          <li>
-            <%= link_to new_log_path, 'data-no-turbolink' => true do %>
-              <span class="glyphicon glyphicon-plus"></span> Add Record
-            <% end %>
-          </li>
-
-          <li>
-            <%= link_to root_path do%>
-              <span class="glyphicon glyphicon-upload"></span> Mass Upload
-            <% end %>
-          </li>
+            <li>
+              <%= link_to root_path do%>
+                <span class="glyphicon glyphicon-upload"></span> Mass Upload
+              <% end %>
+            </li>
+          <% end %>
 
           <li>
             <%= link_to destroy_user_session_path, method: :delete do%>

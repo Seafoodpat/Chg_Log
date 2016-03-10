@@ -29,21 +29,6 @@
 
   <br>
   <br>
-	
-	<%= f.label :currencies_eq , "Search by Currency:"%>   
-  <%= f.select :currencies_eq, options_for_select([[''],['HKD'],['USD'],['EUR'],['CAD'],['SGD'],['AUD'],['MYR'],['RMB'],['KRW'],['GBP']], params[:currencies]), {} %>
-
-  <br>
-  <br>
-
-  <%= f.label :amount_gteq , "Amount greater than"%>   
-  <%= f.text_field :amount_gteq %>     
-
-  <%=f.label :amount_date_lteq, "Amount less than" %>   
-  <%= f.text_field :amount_lteq %>
-
-  <br>
-  <br>
 
   <%= f.submit %>
 

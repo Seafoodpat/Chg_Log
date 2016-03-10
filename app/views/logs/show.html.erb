@@ -61,7 +61,7 @@
       <p>
         <strong>Amount:</strong><br>
         <%= @log.currencies %>
-        <%= @log.amount %>
+        <%= number_to_currency(@log.amount, :unit => "") %>
       </p>
     </div>
 
@@ -102,7 +102,9 @@
   <br>
 
   <div class="panel-footer">
-    <%= link_to 'Edit', edit_log_path(@log) %> |
+    <% if not current_user.viewer? %>
+      <%= link_to 'Edit', edit_log_path(@log) %> |
+    <% end %>
     <%= link_to 'Back', logs_path %>
   </div>
 </div>

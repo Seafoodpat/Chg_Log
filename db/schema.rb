@@ -11,7 +11,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160306084145) do
+ActiveRecord::Schema.define(version: 20160310154946) do
+
+  create_table "categories", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "logs", force: :cascade do |t|
     t.string   "chq_number"
@@ -31,6 +36,7 @@ ActiveRecord::Schema.define(version: 20160306084145) do
     t.integer  "user_id"
     t.string   "salesperson"
     t.string   "voucher_no"
+    t.string   "void"
   end
 
   create_table "users", force: :cascade do |t|
@@ -47,9 +53,25 @@ ActiveRecord::Schema.define(version: 20160306084145) do
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
     t.string   "name"
+    t.boolean  "viewer"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+
+  create_table "v_categories", force: :cascade do |t|
+    t.string   "v_category"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "variables", force: :cascade do |t|
+    t.string   "category"
+    t.string   "salesperson"
+    t.string   "currency"
+    t.string   "particular"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
 
 end

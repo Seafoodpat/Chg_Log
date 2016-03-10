@@ -15,7 +15,11 @@
       <th>Prepared by</th>
       <th>Sign chq date</th>
       <th>Chq Presented date</th>
-      <th colspan="3"></th>
+      <% if not current_user.viewer? %>
+        <th colspan="3"></th>
+      <% else %>
+      <th colspan="1"></th>
+      <% end %>
     </tr>
   </thead>
 
@@ -34,24 +38,26 @@
         <td><%= log.prepared %></td>
         <td><%= log.sign_date %></td>
         <td><%= log.present_date %></td>
-
+        
         <td>
           <%= link_to log, class: 'btn btn-success btn-xs', 'data-no-turbolink' => true do %>
             <span class="glyphicon glyphicon-eye-open"></span>
           <% end %>
         </td>
 
-        <td>
-          <%= link_to edit_log_path(log), class: 'btn btn-warning btn-xs', 'data-no-turbolink' => true do %>
-            <span class="glyphicon glyphicon-edit"></span>
-          <% end %>
-        </td>
+        <% if not current_user.viewer? %>
+          <td>
+            <%= link_to edit_log_path(log), class: 'btn btn-warning btn-xs', 'data-no-turbolink' => true do %>
+              <span class="glyphicon glyphicon-edit"></span>
+            <% end %>
+          </td>
 
-        <td>
-          <%= link_to log, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-xs' do %>
-            <span class="glyphicon glyphicon-trash"></span>
-          <% end %>
-        </td>
+          <td>
+            <%= link_to log, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-xs' do %>
+              <span class="glyphicon glyphicon-trash"></span>
+            <% end %>
+          </td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>

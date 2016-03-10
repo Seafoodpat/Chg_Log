@@ -11,45 +11,64 @@ class LogsController < ApplicationController
   end
 
   def new
-    @log = current_user.logs.build
-    @log.prepared = current_user.name
+    if current_user.viewer?
+      redirect_to root_path
+    else
+      @log = current_user.logs.build
+      @log.prepared = current_user.name
+    end
   end
 
   def edit
+    if current_user.viewer?
+      redirect_to root_path
+    end
   end
 
   def create
-    @log = current_user.logs.build(log_params)
-    @log.prepared = current_user.name
+    if current_user.viewer?
+      redirect_to root_path
+    else
+      @log = current_user.logs.build(log_params)
+      @log.prepared = current_user.name
 
-    respond_to do |format|
-      if @log.save
-        format.html { redirect_to @log, notice: 'Record was successfully created.' }
-        format.json { render :show, status: :created, location: @log }
-      else
-        format.html { render :new }
-        format.json { render json: @log.errors, status: :unprocessable_entity }
+      respond_to do |format|
+        if @log.save
+          format.html { redirect_to @log, notice: 'Record was successfully created.' }
+          format.json { render :show, status: :created, location: @log }
+        else
+          format.html { render :new }
+          format.json { render json: @log.errors, status: :unprocessable_entity }
+        end
       end
     end
   end
 
   def update
-    respond_to do |format|
-      if @log.update(log_params)
-        format.html { redirect_to @log, notice: 'Record was successfully updated.' }
-        format.json { render :show, status: :ok, location: @log }
-      else
-        format.html { render :edit }
-        format.json { render json: @log.errors, status: :unprocessable_entity }
+    if current_user.viewer?
+      redirect_to root_path
+    else
+      respond_to do |format|
+        if @log.update(log_params)
+          format.html { redirect_to @log, notice: 'Record was successfully updated.' }
+          format.json { render :show, status: :ok, location: @log }
+        else
+          format.html { render :edit }
+          format.json { render json: @log.errors, status: :unprocessable_entity }
+        end
       end
     end
   end
 
   def destroy
-    @log.destroy
-    respond_to do |format|
-      format.html { redirect_to logs_url, notice: 'Record was successfully destroyed.' }
-      format.json { head :no_content }
+    if current_user.viewer?
+      redirect_to root_path
+    else
+      @log.destroy
+      respond_to do |format|
+        format.html { redirect_to logs_url, notice: 'Record was successfully destroyed.' }
+        format.json { head :no_content }
+      end
     end
   end
 
