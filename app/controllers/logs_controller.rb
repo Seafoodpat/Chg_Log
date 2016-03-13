@@ -3,8 +3,17 @@ class LogsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @q = Log.ransack(params[:q])
-    @logs = @q.result(distinct: true).order("created_at DESC").paginate(:page => params[:page], :per_page => 3)
+    if request.format == "csv"
+      @logs = Log.all.order("created_at DESC")
+    else
+      @q = Log.ransack(params[:q])
+      @logs = @q.result(distinct: true).order("created_at DESC").paginate(:page => params[:page], :per_page => 5)
+    end
+
+    respond_to do |format|
+      format.html
+      format.csv { send_data @logs.to_csv, filename: "Chq_log.csv" }
+    end
   end
 
   def show
