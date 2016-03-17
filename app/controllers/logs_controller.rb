@@ -3,16 +3,16 @@ class LogsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    if request.format == "csv"
-      @logs = Log.all.order("created_at DESC")
-    else
-      @q = Log.ransack(params[:q])
-      @logs = @q.result(distinct: true).order("created_at DESC").paginate(:page => params[:page], :per_page => 5)
-    end
+    @q = Log.ransack(params[:q])
+    @logs = @q.result(distinct: true).order("created_at DESC")
 
     respond_to do |format|
-      format.html
-      format.csv { send_data @logs.to_csv, filename: "Chq_log.csv" }
+      format.html do
+        @logs = @logs.paginate(:page => params[:page], :per_page => 5)
+      end
+      format.xlsx do
+        render xlsx: 'index', filename: "Chq_log.xlsx"
+      end
     end
   end
 
@@ -43,7 +43,7 @@ class LogsController < ApplicationController
 
       respond_to do |format|
         if @log.save
-          format.html { redirect_to @log, notice: 'Record was successfully created.' }
+          format.html { redirect_to root_path, notice: 'Record was successfully created.' }
           format.json { render :show, status: :created, location: @log }
         else
           format.html { render :new }

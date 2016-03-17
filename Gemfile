@@ -15,6 +15,8 @@ gem 'devise'
 gem 'will_paginate', '~> 3.0.5'
 gem 'will_paginate-bootstrap'
 gem 'ransack'
+gem 'axlsx', '2.1.0.pre'
+gem 'axlsx_rails'
 gem 'sdoc', '~> 0.4.0', group: :doc
 
 group :development, :test do

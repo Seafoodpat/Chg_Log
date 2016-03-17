@@ -1,0 +1,9 @@
+wb = xlsx_package.workbook
+wb.add_worksheet(name: "Chq_Log") do |sheet|
+	sheet.add_row ["Chq Number", "Chq Date", "Payee Name", "Category", "Deal ID", "Particular", "Salesperson", "Currencies", "Amount", "Prepared by", "Signed Chq Date", "Chq Presented Date"]
+  @logs.each do |log|
+    sheet.add_row [log.chq_number, log.chq_date, log.payee_name, log.category, log.deal_id, log.particular, log.salesperson, log.currencies, log.amount, log.prepared, log.sign_date, log.present_date]
+  end
+end
+
+
