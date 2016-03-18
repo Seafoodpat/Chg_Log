@@ -22,7 +22,7 @@
 <%= link_to "Export", url_for(params.merge(format: :xlsx)), class: "btn btn-success" %>
 
 
-<table class="table table-striped table-condensed">
+<table class="table">
   <thead>
     <tr>
       <th>Chq number</th>
@@ -47,7 +47,11 @@
 
   <tbody>
     <% @logs.each do |log| %>
-      <tr>
+      <% if not log.status == "" %>
+        <tr class="danger">
+      <% else %>
+        <tr>
+      <% end %>
         <td><%= log.chq_number %></td>
         <td><%= log.chq_date %></td>
         <td><%= log.payee_name %></td>
