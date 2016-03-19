@@ -81,6 +81,11 @@ class LogsController < ApplicationController
     end
   end
 
+  def import
+    Log.import(params[:file])
+    redirect_to root_url, notice: "Records imported."
+  end
+
   private
     def set_log
       @log = Log.find(params[:id])

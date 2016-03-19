@@ -12,6 +12,8 @@ gem 'audited-activerecord'
 gem 'bootstrap-sass'
 gem 'bootstrap-datepicker-rails'
 gem 'devise'
+gem "roo"
+gem "iconv"
 gem 'will_paginate', '~> 3.0.5'
 gem 'will_paginate-bootstrap'
 gem 'ransack'
