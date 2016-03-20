@@ -47,8 +47,10 @@
 
   <tbody>
     <% @logs.each do |log| %>
-      <% if not log.status == "" %>
+      <% if log.void_reason.present? %>
         <tr class="danger">
+      <% elsif log.present_date.present? %>
+        <tr class="success">
       <% else %>
         <tr>
       <% end %>

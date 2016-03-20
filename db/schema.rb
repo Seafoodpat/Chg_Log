@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160313045027) do
+ActiveRecord::Schema.define(version: 20160320032041) do
 
   create_table "audits", force: :cascade do |t|
     t.integer  "auditable_id"
@@ -60,6 +60,7 @@ ActiveRecord::Schema.define(version: 20160313045027) do
     t.string   "salesperson"
     t.string   "voucher_no"
     t.string   "void"
+    t.string   "void_reason"
   end
 
   create_table "users", force: :cascade do |t|

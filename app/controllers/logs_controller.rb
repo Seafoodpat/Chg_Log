@@ -92,6 +92,6 @@ class LogsController < ApplicationController
     end
 
     def log_params
-      params.require(:log).permit(:chq_number, :chq_date, :payee_name, :category, :deal_id, :particular, :prepared, :currencies, :amount, :sign_date, :present_date, :status, :salesperson, :voucher_no)
+      params.require(:log).permit(:chq_number, :chq_date, :payee_name, :category, :deal_id, :particular, :prepared, :currencies, :amount, :sign_date, :present_date, :status, :salesperson, :voucher_no, :void_reason)
     end
 end

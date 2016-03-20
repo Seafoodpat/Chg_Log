@@ -2,8 +2,10 @@
   <div class="panel-heading">
     <h2>
       View Record
-      <% if not @log.status == "" %>
+      <% if @log.void_reason.present? %>
         <span class="label label-danger">VOID</span>
+      <% elsif @log.present_date.present? %>
+        <span class="label label-success">PRESENTED</span>
       <% end %>
     </h2>
   </div>
@@ -100,7 +102,7 @@
 
     <div class="col-md-4">
       <strong>Void Cheque Reason:</strong><br>
-      <%= @log.status %>
+      <%= @log.void_reason %>
     </div>
   </div>
 
