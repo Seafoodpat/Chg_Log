@@ -8,7 +8,7 @@ class LogsController < ApplicationController
 
     respond_to do |format|
       format.html do
-        @logs = @logs.paginate(:page => params[:page], :per_page => 5)
+        @logs = @logs.paginate(:page => params[:page], :per_page => 100)
       end
       format.xlsx do
         render xlsx: 'index', filename: "Chq_log.xlsx"

@@ -1,9 +1,9 @@
 wb = xlsx_package.workbook
 wb.add_worksheet(name: "Chq_Log") do |sheet|
-	sheet.add_row ["id", "chq_number", "chq_date", "payee_name", "category", "deal_id", "particular", "salesperson", "currencies", "amount", "prepared", "sign_date", "present_date", "void_reason"]
-	sheet.add_row ["Record ID", "Chq Number", "Chq Date", "Payee Name", "Category", "Deal ID", "Particular", "Salesperson", "Currencies", "Amount", "Prepared by", "Signed Chq Date", "Chq Presented Date", "Void Chq Reason"]
+	sheet.add_row ["id", "chq_number", "chq_date", "payee_name", "category", "deal_id", "particular", "salesperson", "voucher_no", "currencies", "amount", "prepared", "sign_date", "present_date", "void_reason"]
+	sheet.add_row ["Record ID", "Chq Number", "Chq Date", "Payee Name", "Category", "Deal ID", "Particular", "Salesperson", "Voucher Number", "Currencies", "Amount", "Prepared by", "Signed Chq Date", "Chq Presented Date", "Void Chq Reason"]
   @logs.each do |log|
-    sheet.add_row [log.id, log.chq_number, log.chq_date, log.payee_name, log.category, log.deal_id, log.particular, log.salesperson, log.currencies, log.amount, log.prepared, log.sign_date, log.present_date, log.void_reason]
+    sheet.add_row [log.id, log.chq_number, log.chq_date, log.payee_name, log.category, log.deal_id, log.particular, log.salesperson, log.voucher_no, log.currencies, log.amount, log.prepared, log.sign_date, log.present_date, log.void_reason]
   end
 end
 
