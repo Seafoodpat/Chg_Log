@@ -5,11 +5,30 @@ class Log < ActiveRecord::Base
 
 	audited
 
+MAPPING = {
+	"Record ID" => "id",
+	"Chq Number" => "chq_number",
+	"Chq Date" => "chq_date",
+	"Payee Name" => "payee_name",
+	"Category" => "category",
+	"Deal ID" => "deal_id",
+	"Particular" => "particular",
+	"Salesperson" => "salesperson",
+	"Voucher Number" => "voucher_no",
+	"Currencies" => "currencies",
+	"Amount" => "amount",
+	"Prepared by" => "prepared",
+	"Signed Chq Date" => "sign_date",
+	"Chq Presented Date" => "present_date",
+	"Void Chq Reason" => "void_reason"
+}
+
 	def self.import(file)
 	  spreadsheet = open_spreadsheet(file)
 	  header = spreadsheet.row(1)
-	  (3..spreadsheet.last_row).each do |i|
+	  (2..spreadsheet.last_row).each do |i|
 	    row = Hash[[header, spreadsheet.row(i)].transpose]
+	    row.keys.each { |k| row[ MAPPING[k] ] = row.delete(k) if MAPPING[k] }
 	    log = find_by_id(row["id"]) || new
 	    log.attributes = row.to_hash.slice(*row.to_hash.keys)
 	    log.save!
